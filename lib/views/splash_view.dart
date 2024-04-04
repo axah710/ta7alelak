@@ -6,7 +6,7 @@ import 'package:ta7alelak/views/second_splash_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
-  static String id= kSplashViewId;
+  static String id = kSplashViewId;
 
   @override
   _SplashViewState createState() => _SplashViewState();
@@ -16,7 +16,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SecondView(),
+      body: SecondSplashView(),
     );
   }
 }

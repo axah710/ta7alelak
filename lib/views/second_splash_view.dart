@@ -7,14 +7,14 @@ import 'package:ta7alelak/helpers/constants.dart';
 import 'package:ta7alelak/views/get_started_view.dart';
 import 'package:ta7alelak/widgets/custom_fade_route.dart';
 
-class SecondView extends StatefulWidget {
-  const SecondView({super.key});
+class SecondSplashView extends StatefulWidget {
+  const SecondSplashView({super.key});
 
   @override
-  _SecondViewState createState() => _SecondViewState();
+  _SecondSplashViewState createState() => _SecondSplashViewState();
 }
 
-class _SecondViewState extends State<SecondView> {
+class _SecondSplashViewState extends State<SecondSplashView> {
   @override
   void initState() {
     super.initState();

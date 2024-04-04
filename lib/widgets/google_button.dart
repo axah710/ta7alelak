@@ -23,7 +23,7 @@ class GoogleButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             128,
           ),
-          color: kColor,
+          color: kColor.withOpacity(0.66),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,

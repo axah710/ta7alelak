@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ta7alelak/views/home_view.dart';
+import 'package:ta7alelak/views/signup_view.dart';
 import 'package:ta7alelak/widgets/custom_button.dart';
 import 'package:ta7alelak/widgets/custom_text_form_field.dart';
 import 'package:ta7alelak/widgets/google_button.dart';
@@ -51,7 +53,9 @@ class LoginBody extends StatelessWidget {
             height: 22,
           ),
           CustomButton(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, HomeView.id);
+            },
             buttonName: 'Login',
           ),
           const SizedBox(
@@ -63,20 +67,25 @@ class LoginBody extends StatelessWidget {
               fontSize: 16,
             ),
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Dont't Have An Account?",
                 style: TextStyle(
                   fontSize: 15,
                 ),
               ),
-              Text(
-                "  Signup",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, SignupView.id);
+                },
+                child: const Text(
+                  "  Signup",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
