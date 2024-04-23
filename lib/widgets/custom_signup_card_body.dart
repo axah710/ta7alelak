@@ -4,7 +4,6 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ta7alelak/helpers/constants.dart';
 import 'package:ta7alelak/helpers/showsnackbarmessage.dart';
-import 'package:ta7alelak/views/login_view.dart';
 import 'package:ta7alelak/widgets/custom_signup_button.dart';
 import 'package:ta7alelak/widgets/custom_signup_text_field.dart';
 
@@ -29,7 +28,7 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
         } else if (state is SignupSucessState) {
           isLoading = false;
           showSnackBarMessage(context, state.sucessMessage);
-          Navigator.pushNamed(context, LoginView.id);
+          Navigator.pop(context);
         } else if (state is SignupFailureState) {
           isLoading = false;
           showSnackBarMessage(context, state.errorMessage);

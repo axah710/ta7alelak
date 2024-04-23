@@ -8,7 +8,7 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.labelText,
     required this.myIcon,
-    // required this.onChanged,
+    required this.onChanged,
   });
   String labelText;
   IconData myIcon;

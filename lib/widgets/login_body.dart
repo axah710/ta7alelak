@@ -1,6 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
+import 'package:ta7alelak/helpers/showsnackbarmessage.dart';
 import 'package:ta7alelak/views/home_view.dart';
 import 'package:ta7alelak/views/signup_view.dart';
 import 'package:ta7alelak/widgets/custom_button.dart';
@@ -14,141 +16,164 @@ class LoginBody extends StatefulWidget {
   State<LoginBody> createState() => _LoginBodyState();
 }
 
+GlobalKey<FormState> formKey = GlobalKey();
+String? email, password;
+bool isLoading = false;
+
 class _LoginBodyState extends State<LoginBody> {
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 11,
-        right: 11,
-      ),
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 99,
-          ),
-          Image.asset("assets/images/undrawmedicineb2.png"),
-          Text(
-            "Welcome Back!",
-            style: TextStyle(
-              fontSize: 33,
-              color: Colors.black.withOpacity(0.75),
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is LoginLoadingState) {
+          isLoading = true;
+        } else if (state is LoginSucessState) {
+          isLoading = false;
+          Navigator.pushNamed(context, HomeView.id);
+        } else if (state is LoginFailureState) {
+          isLoading = false;
+          showSnackBarMessage(context, state.errorMessage);
+        }
+      },
+      builder: (context, state) {
+        return ModalProgressHUD(
+          inAsyncCall: isLoading,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 11,
+              right: 11,
             ),
-          ),
-          Text(
-            "Please Login To Your Account",
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.black.withOpacity(0.75),
-            ),
-          ),
-          const SizedBox(
-            height: 22,
-          ),
-          CustomTextFormField(
-            labelText: 'Email Address',
-            myIcon: Icons.email,
-          ),
-          const SizedBox(
-            height: 11,
-          ),
-          CustomTextFormField(
-            labelText: 'Password',
-            myIcon: Icons.lock,
-          ),
-          const SizedBox(
-            height: 22,
-          ),
-          CustomButton(
-            onTap: () {
-              Navigator.pushNamed(context, HomeView.id);
-            },
-            buttonName: 'Login',
-          ),
-          const SizedBox(
-            height: 11,
-          ),
-          const Text(
-            "Forget Password?",
-            style: TextStyle(
-              fontSize: 16,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Dont't Have An Account?",
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, SignupView.id);
-                },
-                child: const Text(
-                  "  Signup",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 99,
                   ),
-                ),
+                  Image.asset("assets/images/undrawmedicineb2.png"),
+                  Text(
+                    "Welcome Back!",
+                    style: TextStyle(
+                      fontSize: 33,
+                      color: Colors.black.withOpacity(0.75),
+                    ),
+                  ),
+                  Text(
+                    "Please Login To Your Account",
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black.withOpacity(0.75),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 22,
+                  ),
+                  CustomTextFormField(
+                    labelText: 'Email Address',
+                    myIcon: Icons.email,
+                    onChanged: (data) {
+                      email = data;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 11,
+                  ),
+                  CustomTextFormField(
+                    labelText: 'Password',
+                    myIcon: Icons.lock,
+                    onChanged: (data) {
+                      password = data;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 22,
+                  ),
+                  CustomButton(
+                    onTap: () {
+                      if (formKey.currentState!.validate()) {
+                        BlocProvider.of<AuthCubit>(context)
+                            .userSigninWithEmailAndPassword(
+                          email: email!,
+                          password: password!,
+                        );
+                      }
+                    },
+                    buttonName: 'Login',
+                  ),
+                  const SizedBox(
+                    height: 11,
+                  ),
+                  const Text(
+                    "Forget Password?",
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Dont't Have An Account?",
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, SignupView.id);
+                        },
+                        child: const Text(
+                          "  Signup",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          endIndent: 7,
+                          indent: 13,
+                          color: Colors.black.withOpacity(0.33),
+                        ),
+                      ),
+                      const Text("OR"),
+                      Expanded(
+                        child: Divider(
+                          endIndent: 13,
+                          indent: 7,
+                          color: Colors.black.withOpacity(0.33),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  GoogleButton(
+                    onTap: () async {
+                      await BlocProvider.of<AuthCubit>(context)
+                          .signInWithGoogle();
+                      // Navigator.pushNamed(context, HomeView.id);
+                      if (context.mounted) {
+                        Navigator.pushNamed(context, HomeView.id);
+                      }
+                    },
+                    buttonName: 'Google',
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-          const SizedBox(
-            height: 14,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Divider(
-                  endIndent: 7,
-                  indent: 13,
-                  color: Colors.black.withOpacity(0.33),
-                ),
-              ),
-              const Text("OR"),
-              Expanded(
-                child: Divider(
-                  endIndent: 13,
-                  indent: 7,
-                  color: Colors.black.withOpacity(0.33),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 14,
-          ),
-          GoogleButton(
-            onTap: () async {
-              await signInWithGoogle();
-              Navigator.pushNamed(context, HomeView.id);
-            },
-            buttonName: 'Google',
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

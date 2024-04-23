@@ -34,3 +34,16 @@ final class SignupFailureState extends AuthState {
 
   SignupFailureState({required this.errorMessage});
 }
+
+final class GoogleSignInitial extends AuthState {}
+// This is the initial state ...
+
+final class GoogleSignSucessState extends AuthState {}
+
+final class GoogleSignLoadingState extends AuthState {}
+
+final class GoogleSignFailureState extends AuthState {
+  final String errorMessage;
+
+  GoogleSignFailureState({required this.errorMessage});
+}
