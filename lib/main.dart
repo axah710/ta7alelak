@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ta7alelak/firebase_options.dart';
 import 'package:ta7alelak/helpers/constants.dart';
 import 'package:ta7alelak/views/book_appointment._view.dart';
@@ -16,9 +18,11 @@ import 'package:ta7alelak/views/splash_view.dart';
 import 'package:ta7alelak/views/thank_view.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -27,29 +31,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: kColor,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthCubit(),
         ),
-        useMaterial3: true,
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: kColor,
+          ),
+          useMaterial3: true,
+        ),
+        routes: {
+          GetStartedView.id: (context) => const GetStartedView(),
+          SplashView.id: (context) => const SplashView(),
+          LoginView.id: (context) => const LoginView(),
+          SignupView.id: (context) => const SignupView(),
+          HomeView.id: (context) => const HomeView(),
+          DoctorsView.id: (context) => const DoctorsView(),
+          MedicalTestsView.id: (context) => const MedicalTestsView(),
+          DoctorDetailsView.id: (context) => const DoctorDetailsView(),
+          BookAppointment.id: (context) => const BookAppointment(),
+          ThankView.id: (context) => const ThankView(),
+          BookedAppointmentView.id: (context) => const BookedAppointmentView(),
+          NewsView.id: (context) => const NewsView(),
+        },
+        initialRoute: SplashView.id,
       ),
-      routes: {
-        GetStartedView.id: (context) => const GetStartedView(),
-        SplashView.id: (context) => const SplashView(),
-        LoginView.id: (context) => const LoginView(),
-        SignupView.id: (context) => const SignupView(),
-        HomeView.id: (context) => const HomeView(),
-        DoctorsView.id: (context) => const DoctorsView(),
-        MedicalTestsView.id: (context) => const MedicalTestsView(),
-        DoctorDetailsView.id: (context) => const DoctorDetailsView(),
-        BookAppointment.id: (context) => const BookAppointment(),
-        ThankView.id: (context) => const ThankView(),
-        BookedAppointmentView.id: (context) => const BookedAppointmentView(),
-        NewsView.id: (context) => const NewsView(),
-      },
-      initialRoute: SplashView.id,
     );
   }
 }

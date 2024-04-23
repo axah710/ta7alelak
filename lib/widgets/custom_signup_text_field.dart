@@ -11,7 +11,7 @@ class CustomSignupTextFormField extends StatelessWidget {
     required this.fillColor,
     required this.hintColor,
     required this.enabledBorderSideColor,
-    // required this.onChanged,
+    required this.onChanged,
   });
   String hintText;
   Function(String)? onChanged;
