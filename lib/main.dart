@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ta7alelak/firebase_options.dart';
 import 'package:ta7alelak/helpers/constants.dart';
 import 'package:ta7alelak/views/book_appointment._view.dart';
 import 'package:ta7alelak/views/booked_appointment_view.dart';
@@ -8,11 +10,15 @@ import 'package:ta7alelak/views/get_started_view.dart';
 import 'package:ta7alelak/views/home_view.dart';
 import 'package:ta7alelak/views/login_view.dart';
 import 'package:ta7alelak/views/medical_test_view.dart';
+import 'package:ta7alelak/views/news_view.dart';
 import 'package:ta7alelak/views/signup_view.dart';
 import 'package:ta7alelak/views/splash_view.dart';
 import 'package:ta7alelak/views/thank_view.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 
@@ -41,6 +47,7 @@ class MyApp extends StatelessWidget {
         BookAppointment.id: (context) => const BookAppointment(),
         ThankView.id: (context) => const ThankView(),
         BookedAppointmentView.id: (context) => const BookedAppointmentView(),
+        NewsView.id: (context) => const NewsView(),
       },
       initialRoute: SplashView.id,
     );

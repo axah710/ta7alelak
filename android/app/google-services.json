@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538649822827",
+    "project_id": "ta7alelak",
+    "storage_bucket": "ta7alelak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538649822827:android:599dee74f9985c2f1fd32e",
+        "android_client_info": {
+          "package_name": "com.example.ta7alelak"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACmpsgDcGsejbuQ6AVhziYfnUEIexYsus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

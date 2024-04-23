@@ -31,8 +31,12 @@ dependencies:
   animated_text_kit: ^4.2.2
   animations: ^2.0.11
   cupertino_icons: ^1.0.6
+  dio: ^5.4.2+1
+  firebase_auth: ^4.19.2
+  firebase_core: ^2.30.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.5
   font_awesome_flutter: ^10.7.0
   google_nav_bar: ^5.0.6
   material_design_icons_flutter: ^7.0.7296

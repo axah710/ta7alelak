@@ -12,6 +12,8 @@ const String kDoctorDetailsViewId = "DoctorDetailsView";
 const String kBookAppointmentViewId = "BookAppointmentView";
 const String kThankViewId = "ThankView";
 const String kBookedAppointmentViewId = "BookedAppointmentView";
+const String kNewsViewId = "NewsView";
+
 
 
 
