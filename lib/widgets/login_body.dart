@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ta7alelak/views/home_view.dart';
 import 'package:ta7alelak/views/signup_view.dart';
 import 'package:ta7alelak/widgets/custom_button.dart';
@@ -13,23 +15,23 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
-  // Future<UserCredential> signInWithGoogle() async {
-  //   // Trigger the authentication flow
-  //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-  //   // Obtain the auth details from the request
-  //   final GoogleSignInAuthentication? googleAuth =
-  //       await googleUser?.authentication;
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
-  //   // Create a new credential
-  //   final credential = GoogleAuthProvider.credential(
-  //     accessToken: googleAuth?.accessToken,
-  //     idToken: googleAuth?.idToken,
-  //   );
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
 
-  //   // Once signed in, return the UserCredential
-  //   return await FirebaseAuth.instance.signInWithCredential(credential);
-  // }
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,29 +118,32 @@ class _LoginBodyState extends State<LoginBody> {
           const SizedBox(
             height: 14,
           ),
-          Row(children: [
-            Expanded(
-              child: Divider(
-                endIndent: 7,
-                indent: 13,
-                color: Colors.black.withOpacity(0.33),
+          Row(
+            children: [
+              Expanded(
+                child: Divider(
+                  endIndent: 7,
+                  indent: 13,
+                  color: Colors.black.withOpacity(0.33),
+                ),
               ),
-            ),
-            const Text("OR"),
-            Expanded(
-              child: Divider(
-                endIndent: 13,
-                indent: 7,
-                color: Colors.black.withOpacity(0.33),
+              const Text("OR"),
+              Expanded(
+                child: Divider(
+                  endIndent: 13,
+                  indent: 7,
+                  color: Colors.black.withOpacity(0.33),
+                ),
               ),
-            ),
-          ]),
+            ],
+          ),
           const SizedBox(
             height: 14,
           ),
           GoogleButton(
-            onTap: () {
-              // signInWithGoogle();
+            onTap: () async {
+              await signInWithGoogle();
+              Navigator.pushNamed(context, HomeView.id);
             },
             buttonName: 'Google',
           ),
