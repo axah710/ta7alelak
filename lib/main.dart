@@ -24,12 +24,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    const TAKAMUL(),
+    const TA7ALELAK(),
   );
 }
 
-class TAKAMUL extends StatelessWidget {
-  const TAKAMUL({super.key});
+class TA7ALELAK extends StatelessWidget {
+  const TA7ALELAK({super.key});
 
   @override
   Widget build(BuildContext context) {
