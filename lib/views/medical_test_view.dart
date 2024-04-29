@@ -1,10 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ta7alelak/helpers/constants.dart';
 import 'package:ta7alelak/widgets/custom_signup_button.dart';
 
-class MedicalTestsView extends StatelessWidget {
+class MedicalTestsView extends StatefulWidget {
   const MedicalTestsView({super.key});
   static String id = kMedicalTestsViewId;
+
+  @override
+  State<MedicalTestsView> createState() => _MedicalTestsViewState();
+}
+
+class _MedicalTestsViewState extends State<MedicalTestsView> {
+  XFile? _image;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +74,18 @@ class MedicalTestsView extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
+              SizedBox(
+                height: 123,
+                width: 123,
+                child: _displayImage(),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
               CustomSignupButton(
                 onTap: () {
-                  Navigator.pop(context);
+                  _pickImageFromGallery();
+                  // _pickImageFromCamera();
                 },
                 buttonName: "Add Your Medical Tests",
                 width: 210,
@@ -81,4 +101,35 @@ class MedicalTestsView extends StatelessWidget {
       ),
     );
   }
+
+  Widget _displayImage() {
+    return _image == null
+        ? const Text(
+            'No image selected.',
+            textAlign: TextAlign.center,
+          )
+        : Image.file(
+            File(
+              _image!.path,
+            ),
+          );
+  }
+
+  Future<void> _pickImageFromGallery() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _image = image;
+      });
+    }
+  }
+
+  // Future<void> _pickImageFromCamera() async {
+  //   final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+  //   if (image != null) {
+  //     setState(() {
+  //       _image = image;
+  //     });
+  //   }
+  // }
 }
