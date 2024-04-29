@@ -1,20 +1,23 @@
-import 'package:logging/logging.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 
-// The `AddImageService` class is responsible for uploading an image file to a
-// server using the Dio package in Flutter.
-
 class AddImageService {
-  final Dio _dio = Dio();
-  final Logger _logger = Logger('AddImageService');
+  final Dio dio = Dio();
 
-  Future<Response> addImage({
+  Future<void> addImage({
     required XFile? file,
   }) async {
     try {
       String fileName = file!.path.split('/').last;
+      //Get the file name by splitting the file path and taking the last part.
+
+      Map<String, dynamic> headers = {};
+      // Create an empty headers map.
+
+      headers.addAll({"content-length": "91"});
+      // Add a key-value pair to the headers map with the key
+      // "content-length" and the value "91".
 
       FormData formData = FormData.fromMap(
         {
@@ -24,28 +27,27 @@ class AddImageService {
           ),
         },
       );
+      // Create a FormData object from a map containing the file data.
 
-      Response response = await _dio.post(
+      Response response = await dio.post(
         'http://192.168.1.5:8000/upload',
         data: formData,
         options: Options(
           method: 'POST',
-          headers: {
-            "content-length": "91",
-          },
+          headers: headers,
         ),
       );
+      // Send a POST request to the specified URL with the form data and headers.
 
       if (kDebugMode) {
-        _logger.info(response.data);
+        print(response.data);
       }
-
-      return response;
+      // If the app is in debug mode, print the response data.
     } catch (e) {
       if (kDebugMode) {
-        _logger.severe(e.toString());
+        print(e.toString());
       }
-      rethrow;
+      // Handle the error here
     }
   }
 }
