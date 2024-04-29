@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ta7alelak/helpers/constants.dart';
+import 'package:ta7alelak/services/add_image_service.dart';
 import 'package:ta7alelak/widgets/custom_signup_button.dart';
 
 class MedicalTestsView extends StatefulWidget {
@@ -14,7 +15,7 @@ class MedicalTestsView extends StatefulWidget {
 }
 
 class _MedicalTestsViewState extends State<MedicalTestsView> {
-  XFile? _image;
+  XFile? pickedImage;
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -83,8 +84,9 @@ class _MedicalTestsViewState extends State<MedicalTestsView> {
                 height: 16,
               ),
               CustomSignupButton(
-                onTap: () {
+                onTap: () async {
                   _pickImageFromGallery();
+
                   // _pickImageFromCamera();
                 },
                 buttonName: "Add Your Medical Tests",
@@ -103,14 +105,14 @@ class _MedicalTestsViewState extends State<MedicalTestsView> {
   }
 
   Widget _displayImage() {
-    return _image == null
+    return pickedImage == null
         ? const Text(
             'No image selected.',
             textAlign: TextAlign.center,
           )
         : Image.file(
             File(
-              _image!.path,
+              pickedImage!.path,
             ),
           );
   }
@@ -119,8 +121,12 @@ class _MedicalTestsViewState extends State<MedicalTestsView> {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       setState(() {
-        _image = image;
+        pickedImage = image;
       });
+      final AddImageService addImageService = AddImageService();
+      await addImageService.addImage(file: pickedImage);
+      // Create an instance of the AddImageService class
+      // Call the addImage method on the instance
     }
   }
 
