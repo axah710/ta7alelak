@@ -30,7 +30,7 @@ class AddImageService {
       // Create a FormData object from a map containing the file data.
 
       Response response = await dio.post(
-        'http://192.168.1.5:8000/upload',
+      "https://mmaarrccoo0-t7alelak.hf.space/upload",
         data: formData,
         options: Options(
           method: 'POST',
