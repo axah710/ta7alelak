@@ -1,8 +1,7 @@
-// ignore_for_file: body_might_complete_normally_nullable
+// ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class CustomSignupTextFormField extends StatelessWidget {
   CustomSignupTextFormField({
     this.obscureText = false,
@@ -12,22 +11,22 @@ class CustomSignupTextFormField extends StatelessWidget {
     required this.hintColor,
     required this.enabledBorderSideColor,
     required this.onChanged,
+    this.validator,
   });
+
   String hintText;
   Function(String)? onChanged;
   bool? obscureText;
   Color fillColor;
   Color hintColor;
   Color enabledBorderSideColor;
+  String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText!,
-      validator: (data) {
-        if (data!.isEmpty) {
-          return "This field is required";
-        }
-      },
+      validator: validator,
       onChanged: onChanged,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(

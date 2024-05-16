@@ -8,8 +8,11 @@ class SignupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SignupCard(),
+    return const SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SignupCard(),
+      ),
     );
   }
 }

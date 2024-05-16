@@ -16,7 +16,7 @@ class CustomSignupCardBody extends StatefulWidget {
 
 class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
   GlobalKey<FormState> formKey = GlobalKey();
-  String? email, userName, password;
+  String? email, userName, password, confirmPassword;
   bool isLoading = false;
 
   @override
@@ -48,99 +48,146 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
           ),
           child: ModalProgressHUD(
             inAsyncCall: isLoading,
-            child: Form(
-              key: formKey,
-              child: Center(
-                child: SizedBox(
-                  height: 555,
-                  width: 321,
-                  child: Card(
-                    color: kColor,
-                    elevation: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 14, right: 14),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            height: 27,
-                          ),
-                          const Text(
-                            "Signup",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                              color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: Form(
+                key: formKey,
+                child: Center(
+                  child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.75,
+                      width: 321,
+                      child: CustomScrollView(
+                        slivers: [
+                          SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: 555,
+                              child: Card(
+                                color: kColor,
+                                elevation: 0,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 14,
+                                    right: 14,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        "Signup",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 25,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 27),
+                                      CustomSignupTextFormField(
+                                        onChanged: (data) {
+                                          userName = data;
+                                        },
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "This field is required";
+                                          }
+                                          return null;
+                                        },
+                                        enabledBorderSideColor:
+                                            Colors.transparent,
+                                        hintText: 'Full Name',
+                                        fillColor:
+                                            Colors.white.withOpacity(0.210),
+                                        hintColor:
+                                            Colors.white.withOpacity(0.790),
+                                      ),
+                                      const SizedBox(height: 27),
+                                      CustomSignupTextFormField(
+                                        onChanged: (data) {
+                                          email = data;
+                                        },
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "This field is required";
+                                          }
+                                          return null;
+                                        },
+                                        enabledBorderSideColor:
+                                            Colors.transparent,
+                                        hintText: 'Email',
+                                        fillColor:
+                                            Colors.white.withOpacity(0.210),
+                                        hintColor:
+                                            Colors.white.withOpacity(0.790),
+                                      ),
+                                      const SizedBox(height: 27),
+                                      CustomSignupTextFormField(
+                                        onChanged: (data) {
+                                          password = data;
+                                        },
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "This field is required";
+                                          }
+                                          return null;
+                                        },
+                                        obscureText: true,
+                                        enabledBorderSideColor:
+                                            Colors.transparent,
+                                        hintText: 'Password',
+                                        fillColor:
+                                            Colors.white.withOpacity(0.210),
+                                        hintColor:
+                                            Colors.white.withOpacity(0.790),
+                                      ),
+                                      const SizedBox(height: 27),
+                                      CustomSignupTextFormField(
+                                        onChanged: (data) {
+                                          confirmPassword = data;
+                                        },
+                                        obscureText: true,
+                                        enabledBorderSideColor:
+                                            Colors.transparent,
+                                        hintText: 'Re-type Password',
+                                        fillColor:
+                                            Colors.white.withOpacity(0.210),
+                                        hintColor:
+                                            Colors.white.withOpacity(0.790),
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "This field is required";
+                                          }
+                                          if (value != password) {
+                                            return "Passwords do not match";
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      const SizedBox(height: 37),
+                                      CustomSignupButton(
+                                        onTap: () {
+                                          if (formKey.currentState!
+                                              .validate()) {
+                                            BlocProvider.of<AuthCubit>(context)
+                                                .userSignupWithEmailAndPassword(
+                                              email: email!,
+                                              password: password!,
+                                            );
+                                          }
+                                        },
+                                        buttonName: "Signup",
+                                        width: 210,
+                                        height: 55,
+                                        color: Colors.white.withOpacity(0.321),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 27,
-                          ),
-                          CustomSignupTextFormField(
-                            onChanged: (data) {
-                              userName = data;
-                            },
-                            enabledBorderSideColor: Colors.transparent,
-                            hintText: 'Full Name',
-                            fillColor: Colors.white.withOpacity(0.210),
-                            hintColor: Colors.white.withOpacity(0.790),
-                          ),
-                          const SizedBox(
-                            height: 27,
-                          ),
-                          CustomSignupTextFormField(
-                            onChanged: (data) {
-                              email = data;
-                            },
-                            enabledBorderSideColor: Colors.transparent,
-                            hintText: 'Email',
-                            fillColor: Colors.white.withOpacity(0.210),
-                            hintColor: Colors.white.withOpacity(0.790),
-                          ),
-                          const SizedBox(
-                            height: 27,
-                          ),
-                          CustomSignupTextFormField(
-                            onChanged: (data) {
-                              password = data;
-                            },
-                            enabledBorderSideColor: Colors.transparent,
-                            hintText: 'Password',
-                            fillColor: Colors.white.withOpacity(0.210),
-                            hintColor: Colors.white.withOpacity(0.790),
-                          ),
-                          const SizedBox(
-                            height: 27,
-                          ),
-                          CustomSignupTextFormField(
-                            onChanged: (data) {},
-                            enabledBorderSideColor: Colors.transparent,
-                            hintText: 'Re-type Password',
-                            fillColor: Colors.white.withOpacity(0.210),
-                            hintColor: Colors.white.withOpacity(0.790),
-                          ),
-                          const SizedBox(
-                            height: 37,
-                          ),
-                          CustomSignupButton(
-                            onTap: () {
-                              if (formKey.currentState!.validate()) {
-                                BlocProvider.of<AuthCubit>(context)
-                                    .userSignupWithEmailAndPassword(
-                                  email: email!,
-                                  password: password!,
-                                );
-                              }
-                            },
-                            buttonName: "Signup",
-                            width: 210,
-                            height: 55,
-                            color: Colors.white.withOpacity(0.321),
-                          ),
+                          )
                         ],
-                      ),
-                    ),
-                  ),
+                      )),
                 ),
               ),
             ),

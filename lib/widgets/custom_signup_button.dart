@@ -34,7 +34,6 @@ class CustomSignupButton extends StatelessWidget {
           child: Text(
             textAlign: TextAlign.center,
             maxLines: 1,
-            
             buttonName,
             style: const TextStyle(
               color: Colors.white,
