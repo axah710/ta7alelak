@@ -59,7 +59,9 @@ class _LoginBodyState extends State<LoginBody> {
                           const SizedBox(
                             height: 99,
                           ),
-                          Image.asset("assets/images/undrawmedicineb2.png"),
+                          Image.asset(
+                            "assets/images/undrawmedicineb2.png",
+                          ),
                           Text(
                             "Welcome Back!",
                             style: TextStyle(
