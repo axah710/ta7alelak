@@ -21,6 +21,8 @@ class CustomTextFormField extends StatelessWidget {
       validator: (data) {
         if (data!.isEmpty) {
           return "This field is required";
+        } else if (data.length < 6) {
+          return "Provided data is to short";
         }
       },
       style: const TextStyle(color: Colors.white),
