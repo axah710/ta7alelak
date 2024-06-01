@@ -7,11 +7,11 @@ class PredictionModel extends Equatable {
 
   factory PredictionModel.fromJson(Map<String, dynamic> json) {
     return PredictionModel(
-      prediction: json['prediction'] as String?,
+      prediction: json['error'] as String?,
     );
   }
   Map<String, dynamic> toJson() => {
-        'prediction': prediction,
+        'error': prediction,
       };
 
   @override

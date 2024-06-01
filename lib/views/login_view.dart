@@ -10,7 +10,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      // It expresses the height of the keyboard so that it 
+      // It expresses the height of the keyboard so that it
       //tells the screen not to take on a new size or change its shape ...
       // This property tells the Scaffold not to resize its body when the
       // keyboard appears. Normally, if not set or set to true, the scaffold's

@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ta7alelak/helpers/constants.dart';
 import 'package:ta7alelak/services/add_image_service.dart';
+import 'package:ta7alelak/views/prediction_view.dart';
 import 'package:ta7alelak/widgets/custom_signup_button.dart';
 
 class MedicalTestsView extends StatefulWidget {
@@ -76,18 +75,26 @@ class _MedicalTestsViewState extends State<MedicalTestsView> {
                 const SizedBox(
                   height: 16,
                 ),
-                SizedBox(
-                  height: 123,
-                  width: 123,
-                  child: _displayImage(),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
+                // const SizedBox(
+                //   height: 123,
+                //   width: 123,
+                //   // child: displayImage(),
+                // ),
+                // const SizedBox(
+                //   height: 16,
+                // ),
                 CustomSignupButton(
                   onTap: () async {
-                    _pickImageFromGallery();
-
+                    await pickImageFromGallery();
+                    Navigator.push(
+                      // ignore: use_build_context_synchronously
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PredictionView(
+                          pickedImage: pickedImage!.path,
+                        ),
+                      ),
+                    );
                     // _pickImageFromCamera();
                   },
                   buttonName: "Add Your Medical Tests",
@@ -106,20 +113,7 @@ class _MedicalTestsViewState extends State<MedicalTestsView> {
     );
   }
 
-  Widget _displayImage() {
-    return pickedImage == null
-        ? const Text(
-            'No image selected.',
-            textAlign: TextAlign.center,
-          )
-        : Image.file(
-            File(
-              pickedImage!.path,
-            ),
-          );
-  }
-
-  Future<void> _pickImageFromGallery() async {
+  Future<void> pickImageFromGallery() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       setState(() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ta7alelak/helpers/constants.dart';
-import 'package:ta7alelak/views/book_appointment._view.dart';
+import 'package:ta7alelak/views/book_appointment_view.dart';
 import 'package:ta7alelak/widgets/custom_signup_button.dart';
 
 class DoctorDetailsViewBodyBookButton extends StatelessWidget {

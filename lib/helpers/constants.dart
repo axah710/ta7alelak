@@ -13,15 +13,7 @@ const String kBookAppointmentViewId = "BookAppointmentView";
 const String kThankViewId = "ThankView";
 const String kBookedAppointmentViewId = "BookedAppointmentView";
 const String kNewsViewId = "NewsView";
-
-
-
-
-
-
-
-
-
+const String kPredictionViewId = "PredictionView";
 
 final List<Color> kColorsLinearGradient = [
   kColor.withOpacity(0.99),

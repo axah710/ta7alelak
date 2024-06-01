@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ta7alelak/firebase_options.dart';
 import 'package:ta7alelak/helpers/constants.dart';
-import 'package:ta7alelak/views/book_appointment._view.dart';
+import 'package:ta7alelak/views/book_appointment_view.dart';
 import 'package:ta7alelak/views/booked_appointment_view.dart';
 import 'package:ta7alelak/views/doctor_details_view.dart';
 import 'package:ta7alelak/views/doctors_view.dart';
@@ -60,6 +60,7 @@ class TA7ALELAK extends StatelessWidget {
           ThankView.id: (context) => const ThankView(),
           BookedAppointmentView.id: (context) => const BookedAppointmentView(),
           NewsView.id: (context) => const NewsView(),
+          // PredictionView.id: (context) => const PredictionView(),
         },
         initialRoute: SplashView.id,
       ),
