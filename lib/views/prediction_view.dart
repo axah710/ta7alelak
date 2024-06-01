@@ -10,6 +10,7 @@ class PredictionView extends StatelessWidget {
   });
   static String id = kPredictionViewId;
   final String pickedImage;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +61,7 @@ class PredictionView extends StatelessWidget {
 }
 
 Widget displayImage({required pickedImage}) {
-  return pickedImage == null
-      ? const Text(
-          '',
-          textAlign: TextAlign.center,
-        )
-      : Image.file(
+  return Image.file(
           File(
             pickedImage,
           ),

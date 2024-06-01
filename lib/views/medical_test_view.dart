@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ta7alelak/helpers/constants.dart';
@@ -119,7 +120,9 @@ class _MedicalTestsViewState extends State<MedicalTestsView> {
       setState(() {
         pickedImage = image;
       });
-      final AddImageService addImageService = AddImageService();
+      final AddImageService addImageService = AddImageService(
+        Dio(),
+      );
       await addImageService.addImage(file: pickedImage);
       // Create an instance of the AddImageService class
       // Call the addImage method on the instance

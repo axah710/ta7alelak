@@ -3,9 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddImageService {
-  final Dio dio = Dio();
+  final Dio dio;
 
-  Future<void> addImage({
+  AddImageService( this.dio);
+
+  Future<Map<String, dynamic>> addImage({
     required XFile? file,
   }) async {
     try {
@@ -30,7 +32,7 @@ class AddImageService {
       // Create a FormData object from a map containing the file data.
 
       Response response = await dio.post(
-      "https://mmaarrccoo0-t7alelak.hf.space/upload",
+        "https://mmaarrccoo0-t7alelak.hf.space/upload",
         data: formData,
         options: Options(
           method: 'POST',
@@ -43,10 +45,12 @@ class AddImageService {
         print(response.data);
       }
       // If the app is in debug mode, print the response data.
+      return response.data;
     } catch (e) {
       if (kDebugMode) {
-        print(e.toString());
+        print(e.toString(),);
       }
+      rethrow;
       // Handle the error here
     }
   }
