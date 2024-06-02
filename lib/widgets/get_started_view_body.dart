@@ -8,27 +8,31 @@ class GetStartedViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-        children: [
-          const GetStartedStack(),
-          const SizedBox(
-            height: 18,
-          ),
-          const Divider(
-            thickness: 2,
-            indent: 75,
-            endIndent: 75,
-          ),
-          const SizedBox(
-            height: 75,
-          ),
-          CustomButton(
-            buttonName: 'Get Started',
-            onTap: () {
-              Navigator.pushNamed(context, LoginView.id);
-            },
-          ),
-        ],
-      );
+    double screenHeight = MediaQuery.of(context).size.height;
+    return Column(
+      children: [
+        const GetStartedStack(),
+        const SizedBox(
+          height: 18,
+        ),
+        const Divider(
+          thickness: 2,
+          indent: 75,
+          endIndent: 75,
+        ),
+        SizedBox(
+          height: screenHeight * 0.09,
+        ),
+        CustomButton(
+          buttonName: 'Get Started',
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              LoginView.id,
+            );
+          },
+        ),
+      ],
+    );
   }
 }
