@@ -8,6 +8,8 @@ class ThankView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(left: 14, right: 14),
@@ -25,8 +27,8 @@ class ThankView extends StatelessWidget {
                     ),
                   ],
                 ),
-                height: 500,
-                width: 321,
+                height: screenHeight * 0.6,
+                width: screenWidth * 0.9,
                 child: const ThankYouViewCard(),
               ),
             ),
