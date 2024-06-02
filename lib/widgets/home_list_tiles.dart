@@ -8,10 +8,11 @@ class HomeTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
-        const SizedBox(
-          height: 22,
+        SizedBox(
+          height: screenHeight * 0.05,
         ),
         CustomHomeListTile(
           leading: "assets/images/icon_doctor_1.png",
@@ -23,8 +24,8 @@ class HomeTiles extends StatelessWidget {
             Navigator.pushNamed(context, DoctorsView.id);
           },
         ),
-        const SizedBox(
-          height: 55,
+        SizedBox(
+          height: screenHeight * 0.057,
         ),
         CustomHomeListTile(
           leading: "assets/images/icon_examination.png",

@@ -24,6 +24,7 @@ class CustomHomeListTile extends StatelessWidget {
         leading,
       ),
       title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
@@ -33,9 +34,7 @@ class CustomHomeListTile extends StatelessWidget {
               fontSize: 22,
             ),
           ),
-          SizedBox(
-            width: sizedBoxWidth,
-          ),
+
           CustomSignupButton(
             onTap: onTap,
             buttonName: buttonName,

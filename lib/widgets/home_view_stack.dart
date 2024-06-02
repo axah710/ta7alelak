@@ -6,12 +6,15 @@ class HomeStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: <Widget>[
         Image.asset(
           fit: BoxFit.fill,
           "assets/images/Group3484.png",
-          width: MediaQuery.of(context).size.width,
+          width: screenWidth,
+          height: screenHeight * 0.42,
         ),
         Positioned(
           top: 94.5,

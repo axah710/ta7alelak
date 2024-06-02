@@ -39,7 +39,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               selectedIndex = newIndex;
             });
           },
-          // tabBorderRadius: 100,
           gap: 1,
           padding: const EdgeInsets.all(12.0),
           tabs: const [
