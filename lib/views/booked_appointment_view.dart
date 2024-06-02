@@ -8,6 +8,8 @@ class BookedAppointmentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: BookedAppointmentViewBody());
+    return const Scaffold(
+      body: BookedAppointmentViewBody(),
+    );
   }
 }

@@ -7,27 +7,29 @@ class BookedAppointmentViewBodyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: kColor.withOpacity(0.0123),
-                      blurRadius: 4,
-                      spreadRadius: 2,
-                    ),
-                  ],
-                ),
-                height: 543,
-                width: 321,
-                child: Card(
-                  color: kColor.withOpacity(
-                    0.77,
-                  ),
-                  elevation: 0,
-                  child:const BookedAppointmentViewBodyCardDetails(),
-                ),
-              ),
-            );
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: kColor.withOpacity(0.0123),
+              blurRadius: 4,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
+        height: screenHeight * 0.7,
+        width: screenWidth,
+        child: Card(
+          color: kColor.withOpacity(
+            0.77,
+          ),
+          elevation: 0,
+          child: const BookedAppointmentViewBodyCardDetails(),
+        ),
+      ),
+    );
   }
 }
