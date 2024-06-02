@@ -7,8 +7,8 @@ class DoctorsViewCustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Container(
-        height: 40,
-        width: 40,
+        height: 34,
+        width: 34,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
           color: Colors.white,
@@ -19,7 +19,7 @@ class DoctorsViewCustomAppBar extends StatelessWidget {
           },
           child: const Icon(
             Icons.keyboard_arrow_left_sharp,
-            size: 33,
+            size: 28.05,
           ),
         ),
       ),
@@ -27,7 +27,7 @@ class DoctorsViewCustomAppBar extends StatelessWidget {
         "My Doctors",
         style: TextStyle(
           fontWeight: FontWeight.w500,
-          color: Colors.black.withOpacity(0.77),
+          color: Colors.black.withOpacity(0.57),
           fontSize: 24,
         ),
       ),

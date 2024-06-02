@@ -8,15 +8,17 @@ class DoctorsViewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Card(
       child: Column(
         children: [
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                  left: 8.0,
-                  top: 12.0,
+                padding: EdgeInsets.only(
+                  left: screenWidth * 0.01,
+                  top: screenHeight * 0.01,
                 ),
                 child: Image.asset(
                   "assets/images/doctor_3.jpg",

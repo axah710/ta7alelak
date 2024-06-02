@@ -8,31 +8,28 @@ class DoctorsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: kColorsLinearGradient,
-          ),
-        ),
-        child: const SingleChildScrollView(
-          physics: ScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 8.0,
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: kColorsLinearGradient,
             ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 33,
-                  ),
-                  child: DoctorsViewCustomAppBar(),
-                ),
-                DoctorsViewListViewBuilder(),
-              ],
+          ),
+          child: const SingleChildScrollView(
+            physics: ScrollPhysics(),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 8.0,
+              ),
+              child: Column(
+                children: [
+                  DoctorsViewCustomAppBar(),
+                  DoctorsViewListViewBuilder(),
+                ],
+              ),
             ),
           ),
         ),
