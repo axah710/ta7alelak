@@ -8,36 +8,38 @@ class UserViewBodyOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Column(
       children: [
         const UserViewBodyListTile(
           data: "Edit Profile",
           icon: Icons.person,
         ),
-        const SizedBox(
-          height: 16,
+        SizedBox(
+          height: screenHeight * 0.02,
         ),
         UserViewBodyListTile(
           data: "Last Booked Appointment",
           icon: Icons.date_range,
           onTap: () => Navigator.pushNamed(context, BookedAppointmentView.id),
         ),
-        const SizedBox(
-          height: 16,
+        SizedBox(
+          height: screenHeight * 0.02,
         ),
         const UserViewBodyListTile(
           data: "Notifications",
           icon: Icons.notifications,
         ),
-        const SizedBox(
-          height: 16,
+        SizedBox(
+          height: screenHeight * 0.02,
         ),
         const UserViewBodyListTile(
           data: "Settings",
           icon: Icons.settings,
         ),
-        const SizedBox(
-          height: 16,
+        SizedBox(
+          height: screenHeight * 0.02,
         ),
         UserViewBodyListTile(
           data: "Log Out",
