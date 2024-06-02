@@ -31,10 +31,11 @@ class PredictionView extends StatelessWidget {
           centerTitle: true,
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: screenHeight * 0.1,
+              height: screenHeight * 0.123,
             ),
             SizedBox(
               height: screenHeight * 0.3,
