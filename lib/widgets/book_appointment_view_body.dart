@@ -9,14 +9,15 @@ class BookAppointmentViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    double screenHeight = MediaQuery.of(context).size.height;
+    return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 80,
+            height: screenHeight * 0.05,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 38),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,13 +30,13 @@ class BookAppointmentViewBody extends StatelessWidget {
               ],
             ),
           ),
-          Center(
+          const Center(
             child: BookAppointmentViewBodyCard(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 27,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 24, right: 24),
             child: BookAppointmentViewBodyButtons(),
           ),

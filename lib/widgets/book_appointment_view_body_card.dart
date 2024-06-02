@@ -6,6 +6,8 @@ class BookAppointmentViewBodyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -16,8 +18,8 @@ class BookAppointmentViewBodyCard extends StatelessWidget {
           ),
         ],
       ),
-      height: 500,
-      width: 321,
+      height: screenHeight * 0.66,
+      width: screenWidth * 0.9,
       child: Card(
         color: Colors.white,
         elevation: 0,
