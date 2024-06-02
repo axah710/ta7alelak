@@ -9,14 +9,14 @@ class DoctorDetailsViewImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2.2,
+      height: MediaQuery.of(context).size.height / 2.4,
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
             "assets/images/doctor_3.jpg",
           ),
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(24),

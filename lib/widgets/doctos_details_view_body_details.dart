@@ -12,6 +12,7 @@ class DoctorDetailsViewBodyDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -63,15 +64,10 @@ class DoctorDetailsViewBodyDetails extends StatelessWidget {
           height: 8,
         ),
         const DoctorDetailsViewBodyDetailsBookTimeCard(),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: screenHeight * 0.02,
         ),
-        const Padding(
-          padding: EdgeInsets.only(
-            bottom: 8,
-          ),
-          child: DoctorDetailsViewBodyBookButton(),
-        ),
+        const DoctorDetailsViewBodyBookButton(),
       ],
     );
   }

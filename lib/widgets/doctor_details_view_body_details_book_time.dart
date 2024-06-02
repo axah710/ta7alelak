@@ -6,6 +6,7 @@ class DoctorDetailsViewBodyDetailsBookTimeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
       height: 60,
       child: ListView.builder(
@@ -14,8 +15,8 @@ class DoctorDetailsViewBodyDetailsBookTimeCard extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: ((context, index) {
           return Container(
-            margin: const EdgeInsets.symmetric(
-              horizontal: 6.0,
+            margin: EdgeInsets.symmetric(
+              horizontal: screenWidth * 0.02,
               vertical: 4.0,
             ),
             padding: const EdgeInsets.symmetric(
