@@ -14,11 +14,13 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 255,
-        height: 55,
+        width: screenWidth * 0.7,
+        height: screenHeight * 0.07,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
             128,

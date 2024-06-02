@@ -56,8 +56,8 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
                 key: formKey,
                 child: Center(
                   child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.75,
-                      width: 321,
+                      height: MediaQuery.of(context).size.height * 0.70,
+                      width: MediaQuery.of(context).size.width * 0.85,
                       child: CustomScrollView(
                         slivers: [
                           SliverToBoxAdapter(
