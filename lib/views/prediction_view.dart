@@ -2,15 +2,17 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:ta7alelak/helpers/constants.dart';
+import 'package:ta7alelak/models/prediction_model.dart';
 
 class PredictionView extends StatelessWidget {
   const PredictionView({
     super.key,
     required this.pickedImage,
+    required this.predictionModel,
   });
   static String id = kPredictionViewId;
   final String pickedImage;
-  
+  final PredictionModel? predictionModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +22,13 @@ class PredictionView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Medical Test Result",
+            "Your Medical Test Result",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
+          centerTitle: true,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,12 +36,6 @@ class PredictionView extends StatelessWidget {
             SizedBox(
               height: screenHeight * 0.1,
             ),
-            // const Center(
-            //   child: Text("Your Medical Test:"),
-            // ),
-            // SizedBox(
-            //   height: screenHeight * 0.05,
-            // ),
             SizedBox(
               height: screenHeight * 0.3,
               width: screenWidth * 0.5,
@@ -48,10 +45,23 @@ class PredictionView extends StatelessWidget {
               height: screenHeight * 0.05,
             ),
             const Center(
-              child: Text("Prdeiction:"),
+              child: Text(
+                "Prdeiction:",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            const Center(
-              child: Text("Result Here"),
+            Center(
+              child: Text(
+                predictionModel!.prediction!,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black.withOpacity(0.57),
+                ),
+              ),
             ),
           ],
         ),
@@ -62,8 +72,8 @@ class PredictionView extends StatelessWidget {
 
 Widget displayImage({required pickedImage}) {
   return Image.file(
-          File(
-            pickedImage,
-          ),
-        );
+    File(
+      pickedImage,
+    ),
+  );
 }

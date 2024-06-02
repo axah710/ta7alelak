@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ta7alelak/helpers/constants.dart';
+import 'package:ta7alelak/models/prediction_model.dart';
 import 'package:ta7alelak/services/add_image_service.dart';
 import 'package:ta7alelak/views/prediction_view.dart';
 import 'package:ta7alelak/widgets/custom_signup_button.dart';
@@ -13,6 +14,8 @@ class MedicalTestsView extends StatefulWidget {
   @override
   State<MedicalTestsView> createState() => _MedicalTestsViewState();
 }
+
+PredictionModel? predictionModel;
 
 class _MedicalTestsViewState extends State<MedicalTestsView> {
   XFile? pickedImage;
@@ -93,6 +96,7 @@ class _MedicalTestsViewState extends State<MedicalTestsView> {
                       MaterialPageRoute(
                         builder: (context) => PredictionView(
                           pickedImage: pickedImage!.path,
+                          predictionModel: predictionModel,
                         ),
                       ),
                     );
@@ -123,7 +127,7 @@ class _MedicalTestsViewState extends State<MedicalTestsView> {
       final AddImageService addImageService = AddImageService(
         Dio(),
       );
-      await addImageService.addImage(file: pickedImage);
+      predictionModel = await addImageService.addImage(file: pickedImage);
       // Create an instance of the AddImageService class
       // Call the addImage method on the instance
     }
