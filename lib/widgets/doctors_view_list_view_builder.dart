@@ -6,7 +6,6 @@ class DoctorsViewListViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -15,14 +14,10 @@ class DoctorsViewListViewBuilder extends StatelessWidget {
         BuildContext context,
         int index,
       ) {
-        return Column(
+        return const Column(
           children: [
+            DoctorsViewCard(),
             SizedBox(
-              height: 190,
-              width: screenWidth,
-              child: const DoctorsViewCard(),
-            ),
-            const SizedBox(
               height: 7,
             ),
           ],

@@ -10,166 +10,157 @@ class DoctorsViewCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+
     return Card(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  left: screenWidth * 0.01,
-                  top: screenHeight * 0.01,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: screenHeight * 0.01,
+          horizontal: screenWidth * 0.03,
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    right: screenWidth * 0.03,
+                  ),
+                  child: Image.asset(
+                    "assets/images/doctor_3.jpg",
+                    width: screenWidth * 0.15,
+                    height: screenWidth * 0.15,
+                  ),
                 ),
-                child: Image.asset(
-                  "assets/images/doctor_3.jpg",
-                  width: 75,
-                  height: 75,
-                ),
-              ),
-              const SizedBox(
-                width: 11,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 8.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Dr.Tranquilli",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Dr. Tranquilli",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 121,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 6),
-                          child: Icon(
+                          Icon(
                             Icons.favorite,
                             color: Colors.red,
                             size: 28,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const Text(
-                    "Specilist Medicine",
-                    style: TextStyle(
-                      color: kColor,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const Text(
-                    "6 Years Experince",
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 8.0,
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(7),
-                          ),
-                          height: 7,
-                          width: 7,
-                        ),
-                        const Text(
-                          " 59%",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 33,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(7),
-                          ),
-                          height: 7,
-                          width: 7,
-                        ),
-                        const Text(
-                          " 82 Patient Stories",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 12.0,
-              top: 16.0,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Next Available",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: kColor,
+                          )
+                        ],
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "10:00 ",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      const Text(
+                        "Specialist Medicine",
+                        style: TextStyle(
+                          color: kColor,
+                          fontWeight: FontWeight.w600,
                         ),
-                        Text(
-                          "AM Tommorrow",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
-                        )
-                      ],
-                    )
-                  ],
+                      ),
+                      const Text(
+                        "6 Years Experience",
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                              height: 7,
+                              width: 7,
+                            ),
+                            const Text(
+                              " 59%",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 33,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                              height: 7,
+                              width: 7,
+                            ),
+                            const Text(
+                              " 82 Patient Stories",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(
-                  width: 73,
-                ),
-                CustomSignupButton(
-                  onTap: () {
-                    Navigator.pushNamed(context, DoctorDetailsView.id);
-                  },
-                  buttonName: "Book Now",
-                  width: 111,
-                  height: 44,
-                  color: kColor,
-                )
               ],
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 16.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Next Available",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: kColor,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "10:00 ",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "AM Tomorrow",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  CustomSignupButton(
+                    onTap: () {
+                      Navigator.pushNamed(context, DoctorDetailsView.id,);
+                    },
+                    buttonName: "Book Now",
+                    width: screenWidth * 0.3,
+                    height: screenHeight * 0.06,
+                    color: kColor,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
