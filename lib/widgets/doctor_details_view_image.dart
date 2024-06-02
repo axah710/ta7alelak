@@ -8,6 +8,8 @@ class DoctorDetailsViewImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       height: MediaQuery.of(context).size.height / 2.4,
       width: MediaQuery.of(context).size.width,
@@ -37,15 +39,19 @@ class DoctorDetailsViewImage extends StatelessWidget {
             end: Alignment.topCenter,
           ),
         ),
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 32, left: 12, right: 12),
-              child: DoctorDetailsCustomAppBar(),
+              padding: EdgeInsets.only(
+                top: screenHeight * 0.057,
+                left: screenWidth * 0.057,
+                right: screenWidth * 0.057,
+              ),
+              child: const DoctorDetailsCustomAppBar(),
             ),
-            DoctorDetailsImageText(),
+            const DoctorDetailsImageText(),
           ],
         ),
       ),

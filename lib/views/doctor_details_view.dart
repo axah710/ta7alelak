@@ -8,11 +8,9 @@ class DoctorDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white.withOpacity(0.88),
-        body: const DoctorDetailsBody(),
-      ),
+    return Scaffold(
+      backgroundColor: Colors.white.withOpacity(0.88),
+      body: const DoctorDetailsBody(),
     );
   }
 }
