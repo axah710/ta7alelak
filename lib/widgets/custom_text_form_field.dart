@@ -25,11 +25,15 @@ class CustomTextFormField extends StatelessWidget {
           return "Provided data is to short";
         }
       },
-      style: const TextStyle(color: Colors.white),
+      style: const TextStyle(
+        color: Colors.black,
+      ),
       onChanged: onChanged,
       decoration: InputDecoration(
         prefixIcon: Icon(myIcon),
-        hintStyle: const TextStyle(color: Colors.white),
+        hintStyle: const TextStyle(
+          color: Colors.white,
+        ),
         label: Text(labelText),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
