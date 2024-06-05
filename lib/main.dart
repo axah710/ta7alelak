@@ -5,6 +5,7 @@ import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ta7alelak/cubits/image_prediction_cubit/image_prediction_cubit.dart';
 import 'package:ta7alelak/firebase_options.dart';
 import 'package:ta7alelak/helpers/constants.dart';
+import 'package:ta7alelak/helpers/simple_bloc_observer.dart';
 import 'package:ta7alelak/views/book_appointment_view.dart';
 import 'package:ta7alelak/views/booked_appointment_view.dart';
 import 'package:ta7alelak/views/doctor_details_view.dart';
@@ -24,6 +25,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Bloc.observer  = SimpleBlocObserver();
+
   runApp(
     const TA7ALELAK(),
   );

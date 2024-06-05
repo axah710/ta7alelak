@@ -37,3 +37,5 @@ class SimpleBlocObserver extends BlocObserver {
   // BlocBase instance is created. It allows for initial setup or logging.
   // In debug mode, it prints the created instance.
 }
+
+
