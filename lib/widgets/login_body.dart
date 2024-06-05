@@ -1,9 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ta7alelak/helpers/showsnackbarmessage.dart';
 import 'package:ta7alelak/views/home_view.dart';
+import 'package:ta7alelak/views/medical_test_view.dart';
 import 'package:ta7alelak/views/signup_view.dart';
 import 'package:ta7alelak/widgets/custom_button.dart';
 import 'package:ta7alelak/widgets/custom_text_form_field.dart';
@@ -33,6 +36,17 @@ class _LoginBodyState extends State<LoginBody> {
         } else if (state is LoginFailureState) {
           isLoading = false;
           showSnackBarMessage(context, state.errorMessage);
+        } else if (state is SignInAnonymouslyLoadingState) {
+          isLoading = true;
+        } else if (state is SignInAnonymouslySucessState) {
+          isLoading = false;
+          Navigator.pushNamed(context, MedicalTestsView.id);
+          showSnackBarMessage(context, state.sucessMessage);
+        } else if (state is SignInAnonymouslyFailureState) {
+          isLoading = false;
+          showSnackBarMessage(context, state.errorMessage);
+        } else {
+          isLoading = false;
         }
       },
       builder: (context, state) {
@@ -172,20 +186,36 @@ class _LoginBodyState extends State<LoginBody> {
                           const SizedBox(
                             height: 14,
                           ),
-                          GoogleButton(
-                            onTap: () async {
-                              await BlocProvider.of<AuthCubit>(context)
-                                  .signInWithGoogle();
-                              // Navigator.pushNamed(context, HomeView.id);
-                              if (context.mounted) {
-                                Navigator.pushNamed(context, HomeView.id);
-                              }
-                            },
-                            buttonName: 'Google',
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GoogleButton(
+                                onTap: () async {
+                                  await BlocProvider.of<AuthCubit>(context)
+                                      .signInAnonymously();
+                                },
+                                buttonName: 'Anonymous',
+                                imageName: "assets/images/user2.png",
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.07,
+                              ),
+                              GoogleButton(
+                                onTap: () async {
+                                  await BlocProvider.of<AuthCubit>(context)
+                                      .signInWithGoogle();
+                                  if (context.mounted) {
+                                    Navigator.pushNamed(
+                                      context,
+                                      HomeView.id,
+                                    );
+                                  }
+                                },
+                                buttonName: 'Google',
+                                imageName: "assets/images/google.png",
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.0125,
-                          )
                         ],
                       ),
                     ),

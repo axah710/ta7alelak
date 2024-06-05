@@ -5,6 +5,25 @@ sealed class AuthState {}
 
 final class AuthInitial extends AuthState {}
 
+final class SignInAnonymouslyInitial extends AuthState {}
+// This is the initial state ...
+
+final class SignInAnonymouslySucessState extends AuthState {
+  final String sucessMessage;
+
+  SignInAnonymouslySucessState({
+    required this.sucessMessage,
+  });
+}
+
+final class SignInAnonymouslyLoadingState extends AuthState {}
+
+final class SignInAnonymouslyFailureState extends AuthState {
+  final String errorMessage;
+
+  SignInAnonymouslyFailureState({required this.errorMessage});
+}
+
 final class LoginInitialState extends AuthState {}
 // This is the initial state ...
 

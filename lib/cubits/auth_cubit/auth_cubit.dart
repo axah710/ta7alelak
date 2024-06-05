@@ -9,6 +9,31 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
+  Future<void> signInAnonymously() async {
+    emit(
+      SignInAnonymouslyLoadingState(),
+    );
+    try {
+      final userCredential = await FirebaseAuth.instance.signInAnonymously();
+      emit(
+        SignInAnonymouslySucessState(
+            sucessMessage: "Signed in with temporary account."),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "admin-restricted-operation") {
+        emit(
+          SignInAnonymouslyFailureState(
+            errorMessage: "Anonymous accounts are not enabled.",
+          ),
+        );
+      } else {
+        SignInAnonymouslyFailureState(
+          errorMessage: "This operation is restricted to administrators only.",
+        );
+      }
+    }
+  }
+
   Future<void> userSigninWithEmailAndPassword(
       {required email, required password}) async {
     emit(LoginLoadingState());
@@ -94,6 +119,7 @@ class AuthCubit extends Cubit<AuthState> {
       print(change);
     }
   }
+
   // This method is overridden from the Cubit class and is called whenever
   //the state of the AuthCubit changes. It prints the state changes if the
   //application is running in debug mode.
