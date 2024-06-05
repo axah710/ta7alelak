@@ -22,6 +22,25 @@ final class SignInAnonymouslyFailureState extends AuthState {
   final String errorMessage;
 
   SignInAnonymouslyFailureState({required this.errorMessage});
+
+}
+  final class SignoutInitial extends AuthState {}
+
+final class SignoutSucessState extends AuthState {
+  final String sucessMessage;
+
+  SignoutSucessState({required this.sucessMessage});
+
+
+}
+
+final class SignoutLoadingState extends AuthState {}
+
+final class SignoutFailureState extends AuthState {
+  final String errorMessage;
+
+  SignoutFailureState({required this.errorMessage});
+
 }
 
 final class LoginInitialState extends AuthState {}

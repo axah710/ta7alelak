@@ -9,6 +9,7 @@ class HomeStack extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     bool isSmallScreen = screenWidth < 600;
+    
 
     return Stack(
       children: <Widget>[

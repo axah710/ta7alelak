@@ -3,8 +3,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:ta7alelak/helpers/constants.dart';
 import 'package:ta7alelak/views/news_view.dart';
 import 'package:ta7alelak/views/settings_view.dart';
+import 'package:ta7alelak/views/user_view.dart';
 import 'package:ta7alelak/widgets/home_view_body.dart';
-import 'package:ta7alelak/widgets/user_view_body.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -19,7 +19,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   final List screens = const [
     HomeViewBody(),
     NewsView(),
-    UserViewBody(),
+    UserView(),
     SettingsView(),
   ];
   @override

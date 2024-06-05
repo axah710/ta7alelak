@@ -1,10 +1,8 @@
-// ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // Assuming you are using Firebase Auth
-import 'package:ta7alelak/helpers/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ta7alelak/views/booked_appointment_view.dart';
-import 'package:ta7alelak/views/get_started_view.dart';
 import 'package:ta7alelak/widgets/user_view_body_list_tile.dart';
 
 class UserViewBodyOptions extends StatelessWidget {
@@ -27,7 +25,10 @@ class UserViewBodyOptions extends StatelessWidget {
           UserViewBodyListTile(
             data: "Last Booked Appointment",
             icon: Icons.date_range,
-            onTap: () => Navigator.pushNamed(context, BookedAppointmentView.id,),
+            onTap: () => Navigator.pushNamed(
+              context,
+              BookedAppointmentView.id,
+            ),
           ),
           SizedBox(
             height: screenHeight * 0.02,
@@ -50,12 +51,8 @@ class UserViewBodyOptions extends StatelessWidget {
             data: "Log Out",
             icon: Icons.logout,
             onTap: () async {
-              await FirebaseAuth.instance.signOut();
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => const GetStartedView()),
-                ModalRoute.withName(kGetStartedViewId),
-              );
+              await BlocProvider.of<AuthCubit>(context).signOut();
+         
             },
           ),
         ],

@@ -15,7 +15,7 @@ class CustomSignupCardBody extends StatefulWidget {
 }
 
 class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
-final  GlobalKey<FormState> _signupFormKey = GlobalKey();
+  final GlobalKey<FormState> _signupFormKey = GlobalKey();
   String? email, userName, password, confirmPassword;
   bool isLoading = false;
 
@@ -104,8 +104,7 @@ final  GlobalKey<FormState> _signupFormKey = GlobalKey();
                                       ),
                                       const SizedBox(height: 27),
                                       CustomSignupTextFormField(
-                                                                                focusedBorderColor: Colors.transparent,
-
+                                        focusedBorderColor: Colors.transparent,
                                         onChanged: (data) {
                                           email = data;
                                         },
@@ -125,8 +124,7 @@ final  GlobalKey<FormState> _signupFormKey = GlobalKey();
                                       ),
                                       const SizedBox(height: 27),
                                       CustomSignupTextFormField(
-                                                                                focusedBorderColor: Colors.transparent,
-
+                                        focusedBorderColor: Colors.transparent,
                                         onChanged: (data) {
                                           password = data;
                                         },
@@ -147,8 +145,7 @@ final  GlobalKey<FormState> _signupFormKey = GlobalKey();
                                       ),
                                       const SizedBox(height: 27),
                                       CustomSignupTextFormField(
-                                                                                focusedBorderColor: Colors.transparent,
-
+                                        focusedBorderColor: Colors.transparent,
                                         onChanged: (data) {
                                           confirmPassword = data;
                                         },

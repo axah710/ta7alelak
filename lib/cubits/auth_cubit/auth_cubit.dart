@@ -8,7 +8,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  AuthCubit()
+      : super(
+          AuthInitial(),
+        );
   Future<void> signInAnonymously() async {
     emit(
       SignInAnonymouslyLoadingState(),
@@ -63,7 +66,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> userSignupWithEmailAndPassword(
-      {required email, required password}) async {
+      {required email, required password  }) async {
     emit(SignupLoadingState());
     try {
       UserCredential user = await FirebaseAuth.instance
@@ -110,6 +113,22 @@ class AuthCubit extends Cubit<AuthState> {
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  Future<void> signOut() async {
+    emit(
+      SignoutLoadingState(),
+    );
+    try {
+      await FirebaseAuth.instance.signOut();
+      emit(
+        SignoutSucessState(sucessMessage: 'Signed out successfully.'),
+      );
+    } on Exception {
+      emit(
+        LoginFailureState(errorMessage: " Oops there was an error."),
+      );
+    }
   }
 
   @override
