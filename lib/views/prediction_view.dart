@@ -56,7 +56,7 @@ class PredictionView extends StatelessWidget {
             ),
             Center(
               child: Text(
-                predictionModel!.prediction!,
+                predictionModel!.prediction ?? "No Prediction Available",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

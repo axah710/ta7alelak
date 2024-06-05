@@ -19,7 +19,7 @@ class LoginBody extends StatefulWidget {
   State<LoginBody> createState() => _LoginBodyState();
 }
 
-GlobalKey<FormState> formKey = GlobalKey();
+final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
 String? email, password;
 bool isLoading = false;
 
@@ -67,7 +67,7 @@ class _LoginBodyState extends State<LoginBody> {
                 slivers: [
                   SliverToBoxAdapter(
                     child: Form(
-                      key: formKey,
+                      key: _loginFormKey,
                       child: Column(
                         children: [
                           const SizedBox(
@@ -116,7 +116,7 @@ class _LoginBodyState extends State<LoginBody> {
                           ),
                           CustomButton(
                             onTap: () {
-                              if (formKey.currentState!.validate()) {
+                              if (_loginFormKey.currentState!.validate()) {
                                 BlocProvider.of<AuthCubit>(context)
                                     .userSigninWithEmailAndPassword(
                                   email: email!,

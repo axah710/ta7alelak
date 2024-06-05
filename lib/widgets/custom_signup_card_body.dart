@@ -15,7 +15,7 @@ class CustomSignupCardBody extends StatefulWidget {
 }
 
 class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
-  GlobalKey<FormState> formKey = GlobalKey();
+final  GlobalKey<FormState> _signupFormKey = GlobalKey();
   String? email, userName, password, confirmPassword;
   bool isLoading = false;
 
@@ -53,7 +53,7 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
               child: Form(
-                key: formKey,
+                key: _signupFormKey,
                 child: Center(
                   child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.70,
@@ -173,7 +173,7 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
                                       const SizedBox(height: 37),
                                       CustomSignupButton(
                                         onTap: () {
-                                          if (formKey.currentState!
+                                          if (_signupFormKey.currentState!
                                               .validate()) {
                                             BlocProvider.of<AuthCubit>(context)
                                                 .userSignupWithEmailAndPassword(

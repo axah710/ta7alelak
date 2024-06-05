@@ -119,6 +119,7 @@ class _SecondSplashViewState extends State<SecondSplashView> {
                             'TA7ALELAK',
                             duration: const Duration(milliseconds: 1700),
                             textStyle: const TextStyle(
+                              color: Colors.grey,
                               fontSize: 30,
                               fontWeight: FontWeight.w700,
                             ),
