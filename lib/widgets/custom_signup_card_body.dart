@@ -176,7 +176,6 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
                                                 .userSignupWithEmailAndPassword(
                                               email: email!,
                                               password: password!,
-                                              userName: userName!,
                                             );
                                           }
                                         },
