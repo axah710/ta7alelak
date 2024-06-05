@@ -9,7 +9,7 @@ class UserViewBodyUserDetails extends StatelessWidget {
     return const Column(
       children: [
         Text(
-          "Ahmed Adel Hammad",
+          "Ahmed Adel",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: kColor,
