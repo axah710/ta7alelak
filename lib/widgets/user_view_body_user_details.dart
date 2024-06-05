@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ta7alelak/helpers/constants.dart';
 
 class UserViewBodyUserDetails extends StatelessWidget {
@@ -6,20 +8,23 @@ class UserViewBodyUserDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    String userEmail = BlocProvider.of<AuthCubit>(context).userEmail!;
+    String userName = BlocProvider.of<AuthCubit>(context).userName!;
+
+    return Column(
       children: [
         Text(
-          "Ahmed Adel Hammad",
+          userName,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: kColor,
             fontWeight: FontWeight.w600,
             fontSize: 18,
           ),
         ),
         Text(
-          "ahax710@gmail.com",
-          style: TextStyle(
+          userEmail,
+          style: const TextStyle(
             color: Colors.grey,
             fontWeight: FontWeight.w500,
           ),

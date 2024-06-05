@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ta7alelak/widgets/custom_signup_button.dart';
 
 class HomeStack extends StatelessWidget {
@@ -9,7 +11,7 @@ class HomeStack extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     bool isSmallScreen = screenWidth < 600;
-    
+    String userName = BlocProvider.of<AuthCubit>(context).userName!;
 
     return Stack(
       children: <Widget>[
@@ -23,7 +25,7 @@ class HomeStack extends StatelessWidget {
           top: screenHeight * 0.1,
           left: screenWidth * 0.1,
           child: Text(
-            "Hi, Name",
+            "Hi, $userName",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.grey.shade50,

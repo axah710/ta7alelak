@@ -25,7 +25,7 @@ class UserViewBody extends StatelessWidget {
           showSnackBarMessage(context, state.sucessMessage);
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const GetStartedView()),
+            MaterialPageRoute(builder: (context) => const GetStartedView(),),
             ModalRoute.withName(kGetStartedViewId),
           );
         } else if (state is SignoutFailureState) {
