@@ -1,5 +1,6 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,6 +47,7 @@ class AuthCubit extends Cubit<AuthState> {
         email: email!,
         password: password!,
       );
+      
       emit(LoginSucessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -65,12 +67,24 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> userSignupWithEmailAndPassword(
-      {required email, required password  }) async {
+  Future<void> userSignupWithEmailAndPassword({
+    required email,
+    required password,
+    required userName,
+  }) async {
     emit(SignupLoadingState());
     try {
       UserCredential user = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email!, password: password!);
+      User? userInfo = user.user;
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userInfo!.uid)
+          .set({
+        'username': userName,
+        'email': email,
+      });
+
       emit(
         SignupSucessState(
             sucessMessage: 'The account has been created successfully.'),
