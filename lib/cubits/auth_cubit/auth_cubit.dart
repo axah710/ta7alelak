@@ -1,3 +1,4 @@
+
 // ignore_for_file: unused_local_variable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,6 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
+
   AuthCubit()
       : super(
           AuthInitial(),
@@ -47,9 +49,12 @@ class AuthCubit extends Cubit<AuthState> {
         email: email!,
         password: password!,
       );
-      
       emit(LoginSucessState());
-    } on FirebaseAuthException catch (e) {
+
+    
+      }
+
+     on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         emit(
           LoginFailureState(errorMessage: 'No user found for that email.'),
@@ -70,20 +75,15 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> userSignupWithEmailAndPassword({
     required email,
     required password,
-    required userName,
   }) async {
     emit(SignupLoadingState());
     try {
-      UserCredential user = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email!, password: password!);
-      User? userInfo = user.user;
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userInfo!.uid)
-          .set({
-        'username': userName,
-        'email': email,
-      });
+      UserCredential user =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email!,
+        password: password!,
+      );
+    
 
       emit(
         SignupSucessState(
