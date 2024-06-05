@@ -11,7 +11,7 @@ class CustomSignupTextFormField extends StatelessWidget {
     required this.hintColor,
     required this.enabledBorderSideColor,
     required this.onChanged,
-    this.validator,
+    this.validator, required this.focusedBorderColor,
   });
 
   String hintText;
@@ -21,6 +21,7 @@ class CustomSignupTextFormField extends StatelessWidget {
   Color hintColor;
   Color enabledBorderSideColor;
   String? Function(String?)? validator;
+  final Color focusedBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +62,8 @@ class CustomSignupTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             7,
           ),
-          borderSide: const BorderSide(
-            color: Colors.transparent,
+          borderSide:  BorderSide(
+            color:focusedBorderColor ,
           ),
         ),
       ),

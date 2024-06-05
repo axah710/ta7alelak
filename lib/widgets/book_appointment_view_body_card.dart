@@ -25,63 +25,69 @@ class BookAppointmentViewBodyCard extends StatelessWidget {
         elevation: 0,
         child: Padding(
           padding: const EdgeInsets.only(left: 14, right: 14),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 72,
-              ),
-              CustomSignupTextFormField(
-                onChanged: (value) {},
-                enabledBorderSideColor: Colors.grey.withOpacity(0.44),
-                hintText: 'Full Name',
-                fillColor: Colors.white,
-                hintColor: Colors.black,
-              ),
-              const SizedBox(
-                height: 27,
-              ),
-              CustomSignupTextFormField(
-                onChanged: (value) {},
-                enabledBorderSideColor: Colors.grey.withOpacity(0.44),
-                hintText: "Phone Number",
-                fillColor: Colors.white,
-                hintColor: Colors.black,
-              ),
-              const SizedBox(
-                height: 27,
-              ),
-              CustomSignupTextFormField(
-                onChanged: (value) {},
-                enabledBorderSideColor: Colors.grey.withOpacity(0.44),
-                hintText: 'Address',
-                fillColor: Colors.white,
-                hintColor: Colors.black,
-              ),
-              const SizedBox(
-                height: 27,
-              ),
-              CustomSignupTextFormField(
-                onChanged: (value) {},
-                enabledBorderSideColor: Colors.grey.withOpacity(0.44),
-                hintText: 'Age',
-                fillColor: Colors.white,
-                hintColor: Colors.black,
-              ),
-              const SizedBox(
-                height: 27,
-              ),
-              CustomSignupTextFormField(
-                onChanged: (value) {},
-                hintText: 'Comment',
-                fillColor: Colors.white,
-                hintColor: Colors.black,
-                enabledBorderSideColor: Colors.grey.withOpacity(0.44),
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 72,
+                ),
+                CustomSignupTextFormField(
+                  onChanged: (value) {},
+                  enabledBorderSideColor: Colors.grey.withOpacity(0.44),
+                  hintText: 'Full Name',
+                  fillColor: Colors.white,
+                  hintColor: Colors.black, focusedBorderColor: Colors.grey.withOpacity(0.44),
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                CustomSignupTextFormField(
+                  onChanged: (value) {},
+                  enabledBorderSideColor: Colors.grey.withOpacity(0.44),
+                  hintText: "Phone Number",
+                  fillColor: Colors.white,
+                  hintColor: Colors.black,
+                  focusedBorderColor: Colors.grey.withOpacity(0.44)
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                CustomSignupTextFormField(
+                  onChanged: (value) {},
+                  enabledBorderSideColor: Colors.grey.withOpacity(0.44),
+                  hintText: 'Address',
+                  fillColor: Colors.white,
+                  hintColor: Colors.black,
+                  focusedBorderColor: Colors.grey.withOpacity(0.44)
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                CustomSignupTextFormField(
+                  onChanged: (value) {},
+                  enabledBorderSideColor: Colors.grey.withOpacity(0.44),
+                  hintText: 'Age',
+                  fillColor: Colors.white,
+                  hintColor: Colors.black,
+                  focusedBorderColor: Colors.grey.withOpacity(0.44)
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                CustomSignupTextFormField(
+                  onChanged: (value) {},
+                  hintText: 'Comment',
+                  fillColor: Colors.white,
+                  hintColor: Colors.black,
+                  enabledBorderSideColor: Colors.grey.withOpacity(0.44),
+                  focusedBorderColor: Colors.grey.withOpacity(0.44)
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ta7alelak/cubits/auth_cubit/auth_cubit.dart';
+import 'package:ta7alelak/cubits/image_prediction_cubit/image_prediction_cubit.dart';
 import 'package:ta7alelak/firebase_options.dart';
 import 'package:ta7alelak/helpers/constants.dart';
 import 'package:ta7alelak/views/book_appointment_view.dart';
@@ -38,6 +39,9 @@ class TA7ALELAK extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthCubit(),
         ),
+        BlocProvider(
+          create: (context) => ImagePredictionCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -60,7 +64,6 @@ class TA7ALELAK extends StatelessWidget {
           ThankView.id: (context) => const ThankView(),
           BookedAppointmentView.id: (context) => const BookedAppointmentView(),
           NewsView.id: (context) => const NewsView(),
-          // PredictionView.id: (context) => const PredictionView(),
         },
         initialRoute: SplashView.id,
       ),

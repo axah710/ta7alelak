@@ -11,7 +11,7 @@ class DoctorDetailsViewBodyDescription extends StatelessWidget {
         fontWeight: FontWeight.w700,
         color: Colors.black.withOpacity(0.66),
       ),
-      textAlign: TextAlign.justify,
+      textAlign: TextAlign.left,
       // Fill the width...
     );
   }

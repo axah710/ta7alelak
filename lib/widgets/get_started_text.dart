@@ -5,14 +5,19 @@ class GetStartedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    double screenWidth = MediaQuery.of(context).size.width;
+    bool isSmallScreen = screenWidth < 600;
+
+    return Column(
       children: [
         Text(
           "Welcome To",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 33,
+            fontSize: isSmallScreen
+                ? 25
+                : 35, // Adjust font size based on screen width
           ),
         ),
         Text(
@@ -20,7 +25,9 @@ class GetStartedText extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 33,
+            fontSize: isSmallScreen
+                ? 25
+                : 35, // Adjust font size based on screen width
           ),
         ),
       ],

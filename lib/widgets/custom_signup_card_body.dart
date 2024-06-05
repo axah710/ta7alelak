@@ -84,6 +84,7 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
                                       ),
                                       const SizedBox(height: 27),
                                       CustomSignupTextFormField(
+                                        focusedBorderColor: Colors.transparent,
                                         onChanged: (data) {
                                           userName = data;
                                         },
@@ -103,6 +104,8 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
                                       ),
                                       const SizedBox(height: 27),
                                       CustomSignupTextFormField(
+                                                                                focusedBorderColor: Colors.transparent,
+
                                         onChanged: (data) {
                                           email = data;
                                         },
@@ -122,6 +125,8 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
                                       ),
                                       const SizedBox(height: 27),
                                       CustomSignupTextFormField(
+                                                                                focusedBorderColor: Colors.transparent,
+
                                         onChanged: (data) {
                                           password = data;
                                         },
@@ -142,6 +147,8 @@ class _CustomSignupCardBodyState extends State<CustomSignupCardBody> {
                                       ),
                                       const SizedBox(height: 27),
                                       CustomSignupTextFormField(
+                                                                                focusedBorderColor: Colors.transparent,
+
                                         onChanged: (data) {
                                           confirmPassword = data;
                                         },

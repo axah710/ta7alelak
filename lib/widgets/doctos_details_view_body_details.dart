@@ -45,12 +45,12 @@ class DoctorDetailsViewBodyDetails extends StatelessWidget {
             color: Colors.black.withOpacity(0.66),
           ),
         ),
-        const SizedBox(
-          height: 8,
+        SizedBox(
+          height: screenHeight * 0.01,
         ),
         const DoctorDetailsViewBodyDetailsBookDateCard(),
-        const SizedBox(
-          height: 8,
+        SizedBox(
+          height: screenHeight * 0.01,
         ),
         Text(
           "Book Time",

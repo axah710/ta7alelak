@@ -11,36 +11,41 @@ class BookAppointmentViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: screenHeight * 0.05,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 38),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BookAppointmentViewBodyIdentity(),
-                BookAppointmentViewBodyDoctorInfo(),
-                SizedBox(
-                  height: 21,
-                ),
-              ],
+      child: Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: screenHeight * 0.05,
             ),
-          ),
-          const Center(
-            child: BookAppointmentViewBodyCard(),
-          ),
-          const SizedBox(
-            height: 27,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 24, right: 24),
-            child: BookAppointmentViewBodyButtons(),
-          ),
-        ],
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 38),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BookAppointmentViewBodyIdentity(),
+                  BookAppointmentViewBodyDoctorInfo(),
+                  SizedBox(
+                    height: 21,
+                  ),
+                ],
+              ),
+            ),
+            const Center(
+              child: BookAppointmentViewBodyCard(),
+            ),
+            const SizedBox(
+              height: 27,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 24, right: 24),
+              child: BookAppointmentViewBodyButtons(),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.0125,
+            )
+          ],
+        ),
       ),
     );
   }

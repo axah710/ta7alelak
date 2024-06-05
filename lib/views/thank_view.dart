@@ -27,7 +27,7 @@ class ThankView extends StatelessWidget {
                     ),
                   ],
                 ),
-                height: screenHeight * 0.6,
+                height: screenHeight * 0.66,
                 width: screenWidth * 0.9,
                 child: const ThankYouViewCard(),
               ),

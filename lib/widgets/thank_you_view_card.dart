@@ -9,57 +9,64 @@ class ThankYouViewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Card(
       color: Colors.white,
       elevation: 0,
       child: Padding(
         padding: const EdgeInsets.only(left: 14, right: 14),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 72,
+        child: SingleChildScrollView(
+          child: Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.066,
+                ),
+                Icon(
+                  MdiIcons.calendarStarFourPoints,
+                  color: kColor,
+                  size: 72,
+                ),
+                SizedBox(
+                  height: screenHeight * 0.040,
+                ),
+                const Text(
+                  "Thanks For Booking!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.040,
+                ),
+                const Text(
+                  "You have successfully booked an appointment with DR Tranquillie December 2024 at 7:00 AM",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                  ),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.08,
+                ),
+                CustomSignupButton(
+                  onTap: () {
+                    Navigator.pushNamed(context, BookedAppointmentView.id);
+                  },
+                  buttonName: "Go To Appointments",
+                  width: screenWidth,
+                  height: screenHeight * 0.06,
+                  color: kColor,
+                ),
+              ],
             ),
-            Icon(
-              MdiIcons.calendarStarFourPoints,
-              color: kColor,
-              size: 72,
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            const Text(
-              "Thanks For Booking!",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            const Text(
-              "You have successfully booked an appointment with DR Tranquillie December 2024 at 7:00 AM",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.grey,
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 77,
-            ),
-            CustomSignupButton(
-              onTap: () {
-                Navigator.pushNamed(context, BookedAppointmentView.id);
-              },
-              buttonName: "Go To Appointments",
-              width: MediaQuery.of(context).size.width,
-              height: 55,
-              color: kColor,
-            ),
-          ],
+          ),
         ),
       ),
     );

@@ -6,21 +6,30 @@ class GetStartedStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    return Stack(
-      children: <Widget>[
-        Image.asset(
-          "assets/images/02.png",
-          fit: BoxFit.fill,
-          width: screenWidth,
-          height: screenHeight * 0.57,
-        ),
-        const Positioned(
-          top: 88,
-          child: GetStartedText(),
-        ),
-      ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double screenWidth = constraints.maxWidth;
+        double screenHeight = MediaQuery.of(context).size.height;
+        bool isSmallScreen = screenWidth < 600;
+
+        return Stack(
+          children: <Widget>[
+            Image.asset(
+              "assets/images/02.png",
+              fit: BoxFit.fill,
+              width: screenWidth,
+              height: screenHeight * 0.57,
+            ),
+            Positioned(
+              top: screenHeight *
+                  (isSmallScreen
+                      ? 0.1
+                      : 0.15), // Adjust position based on screen height
+              child: const GetStartedText(),
+            ),
+          ],
+        );
+      },
     );
   }
 }

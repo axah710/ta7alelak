@@ -19,7 +19,7 @@ class HomeTiles extends StatelessWidget {
           title: "Doctors",
           buttonName: "View",
           subtitle: "Have an appointment today !",
-          sizedBoxWidth: 111,
+          // sizedBoxWidth: 111,
           onTap: () {
             Navigator.pushNamed(context, DoctorsView.id);
           },
@@ -32,7 +32,7 @@ class HomeTiles extends StatelessWidget {
           title: "Your Medical Test",
           buttonName: "Set",
           subtitle: "Upload your medical test now !",
-          sizedBoxWidth: 6,
+          // sizedBoxWidth: 6,
           onTap: () {
             Navigator.pushNamed(context, MedicalTestsView.id);
           },

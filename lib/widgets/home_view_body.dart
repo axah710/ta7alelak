@@ -7,11 +7,13 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        HomeStack(),
-        HomeTiles(),
-      ],
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          HomeStack(),
+          HomeTiles(),
+        ],
+      ),
     );
   }
 }

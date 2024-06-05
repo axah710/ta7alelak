@@ -8,14 +8,16 @@ class DoctorDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
-      child: Column(
-        children: [
-          DoctorDetailsViewImage(),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: DoctorDetailsViewBodyDetails(),
-          ),
-        ],
+      child: Expanded(
+        child: Column(
+          children: [
+            DoctorDetailsViewImage(),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: DoctorDetailsViewBodyDetails(),
+            ),
+          ],
+        ),
       ),
     );
   }

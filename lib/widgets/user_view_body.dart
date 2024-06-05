@@ -9,21 +9,25 @@ class UserViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    return Column(
-      children: [
-        SizedBox(
-          height: screenHeight * 0.1,
+    return SingleChildScrollView(
+      child: Expanded(
+        child: Column(
+          children: [
+            SizedBox(
+              height: screenHeight * 0.1,
+            ),
+            const UserViewBodyUserImage(),
+            SizedBox(
+              height: screenHeight * 0.0,
+            ),
+            const UserViewBodyUserDetails(),
+            SizedBox(
+              height: screenHeight * 0.07,
+            ),
+            const UserViewBodyOptions(),
+          ],
         ),
-        const UserViewBodyUserImage(),
-        SizedBox(
-          height: screenHeight * 0.02,
-        ),
-        const UserViewBodyUserDetails(),
-        SizedBox(
-          height: screenHeight * 0.07,
-        ),
-        const UserViewBodyOptions(),
-      ],
+      ),
     );
   }
 }
