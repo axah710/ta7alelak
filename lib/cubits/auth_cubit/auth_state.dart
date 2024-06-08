@@ -82,3 +82,12 @@ final class GoogleSignFailureState extends AuthState {
 
   GoogleSignFailureState({required this.errorMessage});
 }
+
+final class CheckCurrentUserInitial extends AuthState {}
+
+// This is the initial state ...
+final class CheckCurrentUserLoadingState extends AuthState {}
+
+final class CheckCurrentUserAuthenticatedState extends AuthState {}
+
+final class CheckCurrentUserUnauthenticatedState extends AuthState {}

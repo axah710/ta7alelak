@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -45,8 +43,17 @@ class _LoginBodyState extends State<LoginBody> {
         } else if (state is SignInAnonymouslyFailureState) {
           isLoading = false;
           showSnackBarMessage(context, state.errorMessage);
-        } else {
+        } else if (state is GoogleSignLoadingState) {
+          isLoading = true;
+        } else if (state is GoogleSignSucessState) {
           isLoading = false;
+          Navigator.pushNamed(
+            context,
+            HomeView.id,
+          );
+        } else if (state is GoogleSignFailureState) {
+          isLoading = false;
+          showSnackBarMessage(context, state.errorMessage);
         }
       },
       builder: (context, state) {
@@ -204,12 +211,15 @@ class _LoginBodyState extends State<LoginBody> {
                                 onTap: () async {
                                   await BlocProvider.of<AuthCubit>(context)
                                       .signInWithGoogle();
-                                  if (context.mounted) {
-                                    Navigator.pushNamed(
-                                      context,
-                                      HomeView.id,
-                                    );
-                                  }
+                                  // if (context.mounted) {
+                                  //   Navigator.pushNamed(
+                                  //     context,
+                                  //     HomeView.id,
+                                  //   );
+                                  // }
+                                  // The if (context.mounted) condition is used to check if the
+                                  // BuildContext is still active and can be used to
+                                  //navigate to another screen.
                                 },
                                 buttonName: 'Google',
                                 imageName: "assets/images/google.png",

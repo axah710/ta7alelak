@@ -9,8 +9,24 @@ import 'package:ta7alelak/widgets/user_view_body_options.dart';
 import 'package:ta7alelak/widgets/user_view_body_user_details.dart';
 import 'package:ta7alelak/widgets/user_view_body_user_image.dart';
 
-class UserViewBody extends StatelessWidget {
+class UserViewBody extends StatefulWidget {
   const UserViewBody({super.key});
+
+  @override
+  State<UserViewBody> createState() => _UserViewBodyState();
+}
+
+class _UserViewBodyState extends State<UserViewBody> {
+  late String currentUserName;
+  late String currentUserEmail;
+
+  @override
+  void initState() {
+    currentUserName = BlocProvider.of<AuthCubit>(context).userName!;
+    currentUserEmail = BlocProvider.of<AuthCubit>(context).userEmail!;
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +41,7 @@ class UserViewBody extends StatelessWidget {
           showSnackBarMessage(context, state.sucessMessage);
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const GetStartedView()),
+            MaterialPageRoute(builder: (context) => const GetStartedView(),),
             ModalRoute.withName(kGetStartedViewId),
           );
         } else if (state is SignoutFailureState) {
@@ -45,7 +61,10 @@ class UserViewBody extends StatelessWidget {
               SizedBox(
                 height: screenHeight * 0.01,
               ),
-              const UserViewBodyUserDetails(),
+              UserViewBodyUserDetails(
+                currentUserName: currentUserName,
+                currentUserEmail: currentUserEmail,
+              ),
               SizedBox(
                 height: screenHeight * 0.07,
               ),

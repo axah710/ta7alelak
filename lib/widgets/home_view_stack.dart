@@ -1,15 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:ta7alelak/widgets/custom_signup_button.dart';
 
 class HomeStack extends StatelessWidget {
-  const HomeStack({super.key});
-
+  const HomeStack({
+    super.key,
+    required this.currentUserName,
+  });
+  final String currentUserName;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     bool isSmallScreen = screenWidth < 600;
-    
 
     return Stack(
       children: <Widget>[
@@ -23,7 +27,7 @@ class HomeStack extends StatelessWidget {
           top: screenHeight * 0.1,
           left: screenWidth * 0.1,
           child: Text(
-            "Hi, Name",
+            "Hi, $currentUserName",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.grey.shade50,
