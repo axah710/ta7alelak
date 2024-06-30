@@ -39,4 +39,14 @@ The App was developed by Ahmed Adel Hammad.
 
 
 
+Get Started View : 
+![get started view](https://github.com/axah710/ta7alelak/assets/125761344/4598a22b-e08f-4c30-b04d-5b8c32856be4)
+
+
+
+
+
+
+
+
 
