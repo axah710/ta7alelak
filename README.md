@@ -20,7 +20,7 @@
 - The booking feature simplifies the process of finding and booking appointments with healthcare professionals, enhancing accessibility to medical services.
 
 ### Profile Management
-- Users can update their profile information such as name, contact details, and address.
+- Users can update their profile information such as name.
 - This feature ensures that users can keep their personal information accurate and up-to-date within the app.
 
 ### Kidney Scan
