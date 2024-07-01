@@ -43,6 +43,30 @@ The App was developed by Ahmed Adel Hammad.
 - **Automated kidney scans, reducing manual diagnostic effort by 40%.**
 - **Decreased average wait time for test results by 35%.**
 
+## Business Cases and Impact
+
+### Business Cases
+1. **Healthcare Providers**
+   - **Problem:** Difficulty in managing patient records and appointments.
+   - **Solution:** ta7alelak streamlines the process, providing a digital platform for record-keeping and appointment scheduling.
+   - **Benefit:** Increased efficiency and reduced administrative burden.
+
+2. **Patients**
+   - **Problem:** Inconvenience in accessing medical records and booking appointments.
+   - **Solution:** ta7alelak offers a user-friendly interface for managing medical records and booking appointments with ease.
+   - **Benefit:** Improved access to healthcare services and better health management.
+
+3. **Diagnostic Centers**
+   - **Problem:** High manual effort in conducting and managing kidney scans.
+   - **Solution:** ta7alelak's automated kidney scan feature reduces manual workload.
+   - **Benefit:** More accurate results and increased productivity.
+
+### Impact
+- **30% Reduction in Appointment Booking Time:** Streamlining the booking process saves time for both patients and healthcare providers.
+- **20% Increase in User Trust and Retention:** Enhanced data security measures have significantly improved user trust and retention rates.
+- **40% Reduction in Manual Diagnostic Effort:** Automation of kidney scans has decreased the need for manual intervention, increasing diagnostic efficiency.
+- **35% Decrease in Average Wait Time for Test Results:** Faster processing of medical tests has led to quicker delivery of results, improving patient satisfaction.
+
 ## Screenshots
 
 ### 🚀 Get Started View
